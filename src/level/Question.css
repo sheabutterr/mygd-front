@@ -1,0 +1,132 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.level_box {
+  font-family: 'GmarketSansMedium';
+}
+.level_inner {
+  display: block;
+}
+
+.level_que {
+  text-align: center;
+}
+
+.home-img {
+  width: 70%;
+  height: 100%;
+}
+
+.normal-button {
+  position: relative;
+  background-color: white;
+  color: black; 
+  width: 380px;
+  height: 60px;
+  padding: 8px;
+  margin: 30px;
+  left: auto;
+  right: auto;
+  border-radius: 15px;
+  font-weight: bolder;
+  font-size: larger;
+  border-style: solid;
+  border-color: black;
+  justify-content: center;
+  box-shadow: 5px 5px black;
+}
+
+.app-title {
+  width: 720px;
+  margin: 20px auto;
+  text-align: center;
+  background-color: #F58220;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 5px 5px #e28534;
+}
+
+.quiz-img { 
+  background-color: rgb(137, 215, 241);
+}
+
+.level_com {
+  text-align: center;
+  margin: 100px;
+  font-family: 'GmarketSansMedium';
+}
+
+.question {
+  width: 720px; 
+  margin: 20px auto;
+  text-align: center;
+  background-color: #008E97;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 5px 5px #074d52;
+}
+
+.level_ans {
+  width: 1200px;
+  display: flex;
+  margin: auto;
+}
+
+.send-button {
+  position: relative;
+  width: 250px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  color: black;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  border: solid;
+  border-color: black;
+  box-shadow: 5px 5px black;
+}
+
+.level-img {
+  position: relative;
+  width: 250px;
+  top: 510px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+
+.homeq1 {
+  position: relative;
+  width: 18%;
+  top: 25vw;
+  height: 70px;
+  left: 4%;
+  right: 0;
+  margin: 0 auto;
+  font-family: 'S-CoreDream', 'Noto Sans KR', sans-serif;
+  font-size: 22px;
+  text-align: center;
+  color: #fff;
+  background-color: #f5616e;
+  border: solid;
+  border-color: #eb4747;
+  box-shadow: 5px 5px #eb4747;
+  cursor: pointer;
+}
+
+.QuestionHome {
+  top: 345px;
+}

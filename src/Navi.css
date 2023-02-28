@@ -1,0 +1,196 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.navi_all {
+    background-color: white;
+    display: block;
+}
+
+.navi_main {
+    font-family: 'GmarketSansMedium';
+    float: left;
+    display: flex;    
+    width: 80px;
+    height: 50px;
+    background-color: rgb(201, 174, 250);
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    font-size: 15px;
+}
+
+.navi_login:hover {
+    color: gray;
+}
+
+.navi_login {
+    font-family: 'GmarketSansMedium';
+    margin-right: 50px;
+    float: right;
+    display: flex;    
+    width: 80px;
+    height: 50px;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: "black";
+}
+
+.navi_join:hover {
+    color: gray;
+}
+
+.navi_join { 
+    font-family: 'GmarketSansMedium';
+
+    float: right;
+    display: flex;    
+    width: 80px;
+    height: 50px;    
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-size: 15px;
+    color: "black";
+}
+
+.navi_mypage:hover {
+    color: gray;
+}
+
+.navi_name { 
+    font-family: 'GmarketSansMedium';
+    float: right;
+    display: flex;    
+    width: 200px;
+    height: 50px;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: "black";
+}
+
+.navi_mypage { 
+    font-family: 'GmarketSansMedium';
+    margin-right: 50px;
+    float: right;
+    display: flex;    
+    width: 80px;
+    height: 50px;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: "black";
+}
+
+.navi_logout:hover {
+    color: gray;
+}
+
+.navi_logout { 
+    font-family: 'GmarketSansMedium';
+    float: right;
+    display: flex;    
+    width: 80px;
+    height: 50px;    
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-size: 15px; 
+    color: "black";
+}
+
+.navi_button {
+    font-family: 'GmarketSansMedium';
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    cursor: pointer;
+    color: "black";
+}
+
+.main_menu {
+    font-family: 'GmarketSansMedium';
+    float: left;
+    width: 14%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    height: 160px;          
+}
+
+.main_menu a{
+    text-decoration: none;
+}
+
+.main_menu a:visited {
+    color: transparent;
+}
+
+.main_menu a:hover {
+    text-decoration: underline;
+}
+
+.main_text {
+   height: 100px;
+   
+}
+
+.main_logo {
+    float: left;
+    width: 14%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: transparent;     
+}
+
+
+.main_bar {
+    /* background: linear-gradient(#c3cbcc, rgb(40, 40, 41)); */
+    height: 200px;
+    border-bottom: 1px solid black;
+
+}
+
+.navi_bar {
+    display: block;
+    height: 50px;
+}
+
+.a {
+    text-decoration: none;
+    color: black;
+}
+
+.a:visited {
+    text-decoration: none;
+    color: gray;
+}
+
+.main_text {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.main_menu:visited {
+    text-decoration: none;
+}
+
+.main_image {
+    width: 100%;
+}
+
+.logo_image {
+    width: 160px;
+    margin-top: -20px;
+}
