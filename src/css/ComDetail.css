@@ -1,0 +1,134 @@
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+  }
+
+/* ----------------------------- 커뮤니티 상세 페이지 ----------------------------- */
+
+/* 전체 */
+.community_detail_container {
+	background-color: #fee5ce;
+	width: 90%;
+	height: 900px;
+	padding: 5%;
+	border-top: 3.5px solid #ffb06a;
+}
+/* 상단 제목 */
+.com_detail_title {
+	width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+	margin-bottom: 5%;
+	font-family: 'GmarketSansMedium';
+
+}
+
+/* 글번호 박스 */
+.community_detail_box {
+	width: 100%;
+	height: 40px;
+    margin-bottom: 1%;
+    display: flex;
+    align-items: center;
+}
+.com_title_box1, .com_title_box2 {
+	width: 50%;
+	float: left;
+	margin-bottom: 1%;
+	font-size: 20px;
+	font-family: 'GmarketSansMedium';
+
+}
+/* 내용 제목 */
+
+.com_detail_text_box {
+	width: 100%;
+	height: 40px;
+	margin-bottom: 1%;
+	font-size: 20px;
+	font-family: 'GmarketSansMedium';
+}
+.com_detail_text_title {
+	width: 5%;
+	line-height: 40px;
+}
+.com_detail_text_title, .com_detail_text_box input {
+	float: left;
+}
+.com_detail_text_box input {
+	width: 93.1%;
+	height: 30px;
+	font-size: 20px;
+	border: 3.5px solid #ffb06a;
+	border-radius: 5px;
+    outline: none;
+	font-family: 'GmarketSansMedium';
+}
+
+/* --------------------------------- 내용 입력 칸 --------------------------------- */
+
+.community_detail_contents {
+	width: 98.5%;
+	height: 400px;
+	margin-bottom: 1%;
+	background-color: white;
+	border: 3.5px solid #ffb06a;
+	border-radius: 5px;
+}
+.community_detail_contents textarea {
+	display: block;
+	resize: none;
+	border: none;
+	width: 98.5%;
+	padding: 0.5%;
+	height: 386.5px;
+	font-size: 20px;
+	font-family: 'GmarketSansMedium';
+}
+.community_detail_contents textarea::-webkit-scrollbar {
+	width: 15px;
+}
+.community_detail_contents textarea::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #ffb06a;
+	background: linear-gradient(#fee5ce, #ffb06a);
+}
+.community_detail_contents textarea:focus {
+	outline: none;
+}
+.community_detail_contents textarea::placeholder {
+	color: gray;
+	font-size: 15px;
+}
+
+/* ----------------------------- 커뮤니티 상세 페이지 끝 ----------------------------- */
+
+/* ----------------------------- 커뮤니티 버튼 ----------------------------- */
+
+.com_btn {
+	width: 100%;
+	margin-top: 3%;
+	justify-content: center;
+	display: flex;
+}
+.com_btn input {
+	width: 10%;
+	height: 40px;
+	cursor: pointer;
+	color: #ffb06a;
+	background-color: white;
+	border: 3.5px solid #ffb06a;
+	border-radius: 10px;
+	font-size: 15px;
+	font-family: 'GmarketSansMedium';
+	margin-left: 1%;
+}
+
+.com_btn input:hover {
+	color: white;
+	background-color: #ffb06a;
+	border: 3.5px solid white;
+}

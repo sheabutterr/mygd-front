@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import Navi from '../Navi';
-import "./Question.css";
+import Navi from '../main/Navi';
+import "../css/LevelTest.css";
+import quiz from "../image/quiz01.png";
 
-const Question = ({ history }) => {
 
-  
+const Level = ({ history }) => {
+
+
   const [userIdx, setUserIdx] = useState('');
   const [level, setLevel] = useState([]);
 
@@ -14,15 +16,15 @@ const Question = ({ history }) => {
     const token = sessionStorage.getItem('token');
     if (!token) {
       alert('로그인 후 사용할 수 있습니다.');
-      history.push('/main');
+      history.push('/login');
       return;
     }
 
     const decoded_token = jwt_decode(token);
     console.log(decoded_token);
-    setUserIdx(decoded_token.userIdx);    
+    setUserIdx(decoded_token.userIdx);
 
-    axios.get(`http://192.168.0.53:8080/level`)
+    axios.get(`http://localhost:8080/level`)
       .then(response => {
         setLevel(response.data);
       })
@@ -70,13 +72,10 @@ const Question = ({ history }) => {
     },
   ];
 
-
   const handlerChangeLevel = e => {
-    e.preventDefault();   
-    
+    e.preventDefault();
     let levelId;
-
-    if (newLevel == '고급') {      
+    if (newLevel == '고급') {
       levelId = 3;
     } else if (newLevel = '중급') {
       levelId = 2;
@@ -84,14 +83,9 @@ const Question = ({ history }) => {
       levelId = 1;
     }
 
-    
-
-    console.log(userIdx);
-    console.log(levelId);
-
-    axios.put(`http://192.168.0.53:8080/level/${userIdx}`, { userIdx, levelId },
+    axios.put(`http://localhost:8080/level/${userIdx}`, { userIdx, levelId },
       { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
-      .then(response => {       
+      .then(response => {
         if (response.data) {
           alert('정상적으로 등록 되었습니다. My Page로 이동합니다.')
           history.push('/myPage');
@@ -108,7 +102,7 @@ const Question = ({ history }) => {
     setScore(score + points);
     setQuestionIndex(questionIndex + 1);
   };
-
+  
   let newLevel = useRef('');
   if (questionIndex >= questions.length) {
     // let newLevel;
@@ -124,12 +118,14 @@ const Question = ({ history }) => {
       <>
         <div>
           <Navi />
-        </div>
-        <div className="level_com">
-          <img className="quiz-img" src="image/quiz01.png" alt="quiz-img" />
-          <h1 className='app-title'>★  퀴즈 완료!  ★</h1>
-          <h2 className='question'>나의 영어 레벨은 '{newLevel}' 입니다.</h2>
-          <button className="send-button" onClick={handlerChangeLevel}>제출하기</button>
+          <div className="level_container">
+            <div className="level_inner">
+              <img src={quiz} />
+              <h1>★  퀴즈 완료!  ★</h1>
+              <div className="level_question">나의 영어 레벨은 '{newLevel}' 입니다.</div>
+              <button className="level_sub_btn" onClick={handlerChangeLevel}>제출하기</button>
+            </div>
+          </div>
         </div>
       </>
     );
@@ -141,20 +137,18 @@ const Question = ({ history }) => {
     <>
       <div>
         <Navi />
-      </div>
-      <div className="level_box">
-        <div className="level_inner">
-          <div className="level_que">
-            <h1 className="app-title">내가 들어야 할 강의 추천 테스트</h1>
-            <img className="quiz-img" src="image/quiz01.png" alt="quiz-img" />
-            <h2 className='question'>{currentQuestion.question}</h2>
-          </div>
-          <div className="level_ans" >
-            {currentQuestion.answers.map((answer) => (
-              <button className="normal-button" key={answer.text} onClick={() => handleAnswerClick(answer.points)}>
-                {answer.text}
-              </button>
-            ))}
+        <div className="level_container">
+          <div className="level_inner">
+            <div className="level_catchphrase">레벨테스트를 통해 나에게 맞는 강의 찾아보기!</div>
+            <img src={quiz} />
+            <h2 className='level_question'>{currentQuestion.question}</h2>
+            <div className="level_ans">
+              {currentQuestion.answers.map((answer) => (
+                <button className="level_btn" key={answer.text} onClick={() => handleAnswerClick(answer.points)}>
+                  {answer.text}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -162,4 +156,4 @@ const Question = ({ history }) => {
   );
 }
 
-export default Question;
+export default Level;

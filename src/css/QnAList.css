@@ -1,0 +1,133 @@
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* ------------------------------- QNA 리스트 전체 ------------------------------- */
+
+/* 전체 박스 */
+.qna_container {
+	margin: 5%;
+	width: 90%;
+}
+
+.qna_title {
+	width: 20%;
+	margin: 5% 0% 1% 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	font-family: 'GmarketSansMedium';
+}
+
+/* 리스트 박스 */
+.qna_list_container {
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	color: black;
+	font-family: 'GmarketSansMedium';
+}
+
+.qna_list_container a {
+	text-decoration: none;
+}
+
+.qna_list_container a:visited {
+	color: transparent;
+}
+
+/* 리스트 제목 바 */
+.qna_list_bar {
+	width: 100%;
+	display: flex;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #008E97;
+	color: white;
+}
+
+/* 글번호, 조회수 */
+.qna_list_num,
+.qna_list_view {
+	width: 10%;
+}
+
+/* 카테고리, 작성일 */
+.qna_list_id,
+.qna_list_date {
+	width: 20%;
+}
+
+/* 제목 */
+.qna_list_title {
+	width: 40%;
+	text-align: left;
+}
+
+/* 리스트 내용 칸 전체 */
+.qna_content {
+	width: 100%;
+	text-align: center;
+}
+
+.qna_content tr {
+	width: 100%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	display: flex;
+}
+
+/* 제목 링크 */
+.qna_list_title a {
+	color: black;
+	width: 35%;
+	text-align: left;
+}
+
+
+/* ----------------------------- 글쓰기 버튼, 페이지 ----------------------------- */
+
+.qna_page_btn {
+	width: 100%;
+	margin-top: 3%;
+	margin-bottom: 10%;
+	font-family: 'GmarketSansMedium';
+}
+
+.qna_btn,
+.qna_page {
+	float: left;
+	display: flex;
+	justify-content: right;
+	width: 50%;
+}
+
+.qna_btn a {
+	width: 100px;
+	height: 35px;
+	background-color: #008E97;
+	border: 3px solid #01676e;
+	border-radius: 10px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	color: white;
+	font-size: 20px;
+}
+
+.qna_btn a:link,
+.qna_btn a:visited {
+	text-decoration: none;
+}
+
+.qna_btn a:hover {
+	cursor: pointer;
+	background-color: #ffb06a;
+	border: 3px solid #fe8e2c;
+}
+
+/* ------------------------------- QNA 리스트 전체 끝 ------------------------------- */

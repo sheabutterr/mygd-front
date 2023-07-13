@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import Navi from "../Navi";
-import "./Login.css";
+import Navi from "../main/Navi";
+import "../css/Login.css";
 
 const Login = ({ history }) => {
 
@@ -12,13 +12,13 @@ const Login = ({ history }) => {
     const handlerChangeUserPassword = e => setUserPassword(e.target.value);
 
     const handlerOnClick = e => {
-        axios.post(`http://192.168.0.53:8080/login`, { userId, userPassword })
+        axios.post(`http://localhost:8080/login`, { userId, userPassword })
             .then(response => {
                 console.log(response);
                 if (response.data) {
-                    alert('정상적으로 로그인 되었습니다. 게시판으로 이동합니다.')
+                    alert('정상적으로 로그인 되었습니다.')
                     sessionStorage.setItem("token", response.data);
-                    history.push('/main');
+                    history.push('/');
                 } else {
                     alert('ID, PW가 일치하지 않습니다. 확인 후 다시 시도해주세요.')
                     sessionStorage.clear();
@@ -32,27 +32,23 @@ const Login = ({ history }) => {
     };
 
     return (
-        <>
-            <div>
-                <Navi />
-            </div>
+        <div>
+            <Navi />
             <div className="login_container">
-                <div className="title">
-                    <h1>LOGIN</h1>
-                </div>
-                <div className="loginbox">
-                    <div className="form-group">
-                        <input type="text" id="ID" placeholder="ID" value={userId} onChange={handlerChangeUserId} />
-                    </div>
-                    <div className="mt-2 form-group">
-                        <input type="password" id="PW" placeholder="PASSWORD" value={userPassword} onChange={handlerChangeUserPassword} />
+                <div className="login_title">LOGIN</div>
+                <div className="login_box">
+                    <div>
+                        <input type="text" placeholder="아이디를 입력해주세요" value={userId} onChange={handlerChangeUserId} />
                     </div>
                     <div>
-                        <button className="login_button" onClick={handlerOnClick}>login</button>
+                        <input type="password" placeholder="비밀번호를 입력해주세요" value={userPassword} onChange={handlerChangeUserPassword} />
                     </div>
                 </div>
+                <div className="login_button">
+                    <button onClick={handlerOnClick}>login</button>
+                </div>
             </div>
-        </>
+        </div>
     );
 };
 

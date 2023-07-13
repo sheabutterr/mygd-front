@@ -1,6 +1,6 @@
 import './App.css';
 import { Route } from 'react-router-dom';
-import Main from './Main';
+import Main from './main/Main';
 import Join from "./user/Join";
 import Login from "./user/Login";
 import MyPage from "./user/MyPage";
@@ -10,9 +10,6 @@ import ComWrite from './community/ComWrite';
 import QnaList from './qna/QnaList';
 import QnaDetail from './qna/QnaDetail';
 import QnaWrite from './qna/QnaWrite';
-import ClassLow from './class/classlow/ClassLow';
-import ClassMiddle from './class/classmiddle/ClassMiddle';
-import ClassHigh from './class/classhigh/ClassHigh';
 import LowA from './class/classlow/LowA';
 import LowB from './class/classlow/LowB';
 import LowC from './class/classlow/LowC';
@@ -23,16 +20,14 @@ import HighA from './class/classhigh/HighA';
 import HighB from './class/classhigh/HighB';
 import HighC from './class/classhigh/HighC';
 import ClassList from './class/ClassList';
-import Question from './level/Question';
 import Apply from './user/Apply';
+import Level from './level/Level';
 
 
 function App() {
-
-
   return (
     <>
-      <Route path="/main" component={Main} exact={true} />
+      <Route path="/" component={Main} exact={true} />
       <Route path="/login" component={Login} exact={true} />
       <Route path="/join" component={Join} exact={true} />
       <Route path="/myPage" component={MyPage} exact={true} />
@@ -43,7 +38,8 @@ function App() {
       <Route path="/qna/detail/:qnaId" component={QnaDetail} exact={true} />
       <Route path="/qna/write" component={QnaWrite} exact={true} />
       <Route path="/classList" component={ClassList} />
-      
+      <Route path="/level" component={Level} exact={true} />
+      <Route path="/apply" component={Apply} exact={true} />
       {/* 초급반 */}
       <Route path="/lowA" component={LowA} exact={true} />
       <Route path="/lowB" component={LowB} exact={true} />
@@ -57,9 +53,7 @@ function App() {
       <Route path="/highB" component={HighB} exact={true} />
       <Route path="/highC" component={HighC} exact={true} />
 
-      <Route path="/level" component={Question} exact={true} />
-      <Route path="/apply" component={Apply} exact={true} />      
-
+   
     </>
   );
 }

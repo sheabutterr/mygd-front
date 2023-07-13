@@ -1,0 +1,135 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.jejugothic * { 
+ font-family: 'Jeju Gothic', sans-serif;
+}
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+  }
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+/* ------------------------- 강의 소개 사이드 바 ------------------------- */
+
+.class_intro_container {
+    width: 90%;
+    margin: 5%;
+}
+.class_intro_title {
+    width: 20%;
+    margin: 5% 0% 5% 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: 'GmarketSansMedium';
+}
+.class_sidebar {
+    width: 20%;
+    height: 1515px;
+    display: block;
+    text-align: center;
+    background-color: #EFEFEF;
+    float: left;
+}
+.class_menu {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.class_menu a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+}
+.class_menu a:visited {
+    color: transparent;
+}
+.class_menu a:hover {
+    background-color: #49484880;
+    color: white;
+}
+
+/* ------------------------- 강의 소개 사이드 바 끝 ------------------------- */
+
+/* ------------------------- 강의 소개 메인 ------------------------- */
+
+/* 소개 전체 */
+.class_box {
+    width: 78.5%;
+    height: 500px;
+    margin-left: 0.5%;
+    background-color: #FFD7B5;
+    display: inline-block;
+    border-bottom: 3px solid white;
+}
+/* 강사 사진 */
+.image_box {
+    height: 100%;
+    width: 20%;
+}
+.class_image {
+    width: 100%;
+    margin-top: 60px;
+    margin-left: 7%;
+}
+.image_box, .detail_box {
+    float: left;
+}
+
+/* 내용 전체 박스 */
+.detail_box {
+    width: 80%;
+    font-family: 'Pretendard-Regular';
+    font-size: 25px;
+}
+/* 제목 */
+.detail_title_box {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+}
+.detail_title {
+    height: 50px;
+    font-family: 'Pretendard-Regular';
+    float: right;
+    text-align: right; 
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    background-color: #EFEFEF;
+}
+/* 내용 */
+.detail_content {
+    width: 100%;
+}
+.detail_content ul li {
+    list-style: none;
+}
+.detail_content hr {
+    background-color: black;
+    border: 0;
+    height: 3px;
+}
+
+/* ------------------------- 강의 소개 메인 끝 ------------------------- */

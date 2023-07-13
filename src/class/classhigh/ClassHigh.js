@@ -2,7 +2,7 @@ import HighA from "./HighA";
 import HighB from "./HighB";
 import HighC from "./HighC";
 
-const ClassHigh = ({history}) => {
+const ClassHigh = () => {
 
     return (
         <>

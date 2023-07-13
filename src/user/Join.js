@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import Navi from "../Navi";
-import "./Join.css";
+import Navi from "../main/Navi";
+import "../css/Join.css";
 
 const Join = ({ history }) => {
 
@@ -17,12 +17,12 @@ const Join = ({ history }) => {
 
     const handlerOnClick = e => {
         e.preventDefault();
-        axios.post(`http://192.168.0.53:8080/regist`, { userId, userPassword, userEmail, userName })
+        axios.post(`http://localhost:8080/regist`, { userId, userPassword, userEmail, userName })
             .then(response => {
                 console.log(response);
                 if (response.data) {
-                    alert('정상적으로 가입 되었습니다. 게시판으로 이동합니다.')
-                    history.push('/main');
+                    alert('정상적으로 가입 되었습니다.')
+                    history.push('/');
                 }
             })
             .catch(error => {
@@ -32,30 +32,35 @@ const Join = ({ history }) => {
     };
 
     return (
-        <>
-            <div>
-                <Navi />
-            </div>
-
+        <div>
+            <Navi />
             <div className="join_container">
-                <div className="title"><h1>SIGN UP</h1></div>
-                <div className="joinbox">
-                    <div className="content">
-                        <label for="id"><span>* </span>아이디</label><input type="text" placeholder="아이디를 입력해주세요." value={userId} onChange={handlerChangeUserId} />
+                <div className="join_title">JOIN</div>
+                <div className="join_content_container">
+                    <div className="join_content">
+                        <div className="join_id">
+                            <label>아이디</label>
+                            <input type="text" placeholder="아이디를 입력해주세요." value={userId} onChange={handlerChangeUserId} />
+                        </div>
+                        <div className="join_pw">
+                            <label>비밀번호</label>
+                            <input type="text" placeholder="비밀번호를 입력해주세요." value={userPassword} onChange={handlerChangeUserPassword} />
+                        </div>
+                        <div className="join_name">
+                            <label>이름</label>
+                            <input type="text" placeholder="이름을 입력해주세요." value={userName} onChange={handlerChangeUserName} />
+                        </div>
+                        <div className="join_email">
+                            <label>이메일</label>
+                            <input type="text" placeholder="이메일을 입력해주세요." value={userEmail} onChange={handlerChangeUserEmail} />
+                        </div>
                     </div>
-                    <div className="content">
-                        <label for="pw"><span>* </span>비밀번호</label><input type="text" placeholder="비밀번호를 입력해주세요." value={userPassword} onChange={handlerChangeUserPassword} />
-                    </div>
-                    <div className="content">
-                        <label for="name"><span>* </span>이름</label><input type="text" placeholder="이름을 입력해주세요." value={userName} onChange={handlerChangeUserName} />
-                    </div>
-                    <div className="content">
-                        <label for="email"><span>* </span>이메일</label><input type="text" placeholder="이메일을 입력해주세요." value={userEmail} onChange={handlerChangeUserEmail} />
-                    </div>
-                    <button className="join_button" onClick={handlerOnClick}>join</button>
+                </div>
+                <div className="join_button">
+                    <button onClick={handlerOnClick}>join</button>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

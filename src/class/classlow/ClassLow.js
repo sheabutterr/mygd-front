@@ -2,7 +2,7 @@ import LowA from "./LowA";
 import LowB from "./LowB";
 import LowC from "./LowC";
 
-const ClassLow = ({history}) => { 
+const ClassLow = () => { 
 
     return (
         <>

@@ -1,0 +1,89 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.join_container {
+  width: 100%;
+  height: 700px;
+  font-family: 'GmarketSansMedium';
+  text-align: center;
+  box-sizing: border-box;
+}
+.join_title {
+  width: 20%;
+  margin: 5% 0% 3% 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-family: 'GmarketSansMedium';
+}
+/* ---------------------------------------- 내용 ---------------------------------------- */
+
+.join_content_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.join_content {
+  width: 50%;
+  text-align: center;
+}
+.join_id, .join_pw, .join_name, .join_email {
+  height: 80px;
+}
+.join_content label {
+  width: 5%;
+  height: 50px;
+  line-height: 50px;
+  text-align: left;
+  display: inline-block;
+  position: absolute;
+}
+.join_content input {
+  width: 49%;
+  height: 40px;
+  background-color: #e2f7f9;
+  border: 3px solid #008E97;
+  border-radius: 10px;
+  margin-left: 10%;
+  font-size: 20px;
+  padding-left: 1%;
+  outline: none;
+  font-family: 'GmarketSansMedium';
+}
+
+.join_content input::placeholder {
+  color: grey;
+  font-size: 15px;
+}
+
+/* ----------------------------- 버튼 ----------------------------- */
+
+.join_button {
+	width: 100%;
+  display: flex;
+  justify-content: center;
+	margin-bottom: 10%;
+}
+.join_button button {
+	width: 5%;
+	height: 40px;
+	cursor: pointer;
+	color: white;
+  background-color: #008E97;
+	border: none;
+	border-radius: 10px;
+	font-size: 15px;
+	font-family: 'GmarketSansMedium';
+	margin-left: 1%;
+}
+
+.join_button button:hover {
+  color: #008E97;
+	background-color: #e2f7f9;
+	border: 3.5px solid #008E97;
+}

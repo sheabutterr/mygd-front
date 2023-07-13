@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
-import Navi from "../Navi";
+import Navi from "../main/Navi";
+import "../css/QnAWrite.css";
 
 const QnaWrite = ({ history }) => {
 
@@ -9,29 +10,27 @@ const QnaWrite = ({ history }) => {
     const [qnaContents, setQnaContents] = useState("");
     const [userName, setUserName] = useState('');
 
-
     const handlerChangeQnaTitle = e => setQnaTitle(e.target.value);
     const handlerChangeQnaContents = e => setQnaContents(e.target.value);
-    const handlerChangeUserName = e => setUserName(e.target.value);
+    const handlerClickList = () => history.push('/qna');
 
     useEffect(() => {
 
         const token = sessionStorage.getItem('token');
         const decoded_token = jwt_decode(token);
-        console.log(decoded_token);
         setUserName(decoded_token.name);
     }, [])
 
     const handlerSubmit = e => {
         e.preventDefault();
 
-        axios.post(`http://192.168.0.53:8080/qna/write`,
+        axios.post(`http://localhost:8080/qna/write`,
             { qnaTitle, qnaContents, userName },
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
                 console.log(response);
                 if (response.data.count === 1) {
-                    alert(`${response.data.message} (게시판 번호: ${response.data.qnaId})`);
+                    alert(`등록되었습니다`);
                     history.push('/qna');
                 } else {
                     alert('게시글 등록에 실패했습니다.');
@@ -42,34 +41,28 @@ const QnaWrite = ({ history }) => {
     }
 
     return (
-        <>
-            <div>
-                <Navi />
-            </div>
+        <div>
+            <Navi />
             <div className="qna_write_container">
-                <h2>MYGD에 대해 궁금한 점을 문의해보세요.</h2>
-                <form id="frm" name="frm" onSubmit={handlerSubmit}>
-                    <table className="qna_write">
-                        <tbody>
-                            <tr className="qna_write_title">
-                                <td>제목</td>
-                                <td><input type="text" id="qnaTitle" name="qnaTitle" value={qnaTitle} onChange={handlerChangeQnaTitle} /></td>
-                            </tr>
-                            <tr>
-                                <td>작성자</td>
-                                <td id="userName" name="userName" value={userName} onChange={handlerChangeUserName}>{userName}</td>
-                            </tr>
-                            <tr className="qna_write_contents">
-                                <td colSpan="2"><textarea id="qnaContents" name="qnaContents" value={qnaContents} onChange={handlerChangeQnaContents}></textarea></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div className="qna_write_button">
-                        <input type="submit" id="submit" value="저장" className="btn" />
+                <div className="qna_wirte_title">MYGD에 대해 궁금한 점이 있으신가요?</div>
+                <form id="frm" name="frm">
+                    <div className="qna_text_id">작성자 : {userName}</div>
+                    <div className="qna_text_title">
+                        <input type="text" value={qnaTitle}
+                            placeholder="제목을 입력하세요" onChange={handlerChangeQnaTitle} />
+                    </div>
+                    <div className="qna_write_contents">
+                        <textarea id="qnaContents" name="qnaContents" value={qnaContents}
+                            placeholder="내용을 입력하세요"
+                            onChange={handlerChangeQnaContents} />
                     </div>
                 </form>
+                <div className="qna_write_button">
+                    <input type="button" value="목록으로" onClick={handlerClickList} />
+                    <input type="submit" value="저장" onClick={handlerSubmit} />
+                </div>
             </div>
-        </>
+        </div>
     )
 }
 

@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Navi from '../Navi';
+import Navi from '../main/Navi';
 import jwt_decode from "jwt-decode";
+import "../css/QnADetail.css";
 
-function QnaDetail({ match, history }) {
+const QnaDetail = ({ match, history }) => {
+
     const { qnaId } = match.params;
-
     const [userIdx, setUserIdx] = useState('');
     const [qna, setQna] = useState({});
     const [qnaTitle, setQnaTitle] = useState("");
@@ -25,7 +26,7 @@ function QnaDetail({ match, history }) {
 
         let userIdx = decoded_token.userIdx;
 
-        axios.get(`http://192.168.0.53:8080/qna/${qnaId}`,
+        axios.get(`http://localhost:8080/qna/${qnaId}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
                 console.log(response);
@@ -39,12 +40,12 @@ function QnaDetail({ match, history }) {
 
     const handlerClickList = () => history.push('/qna');
     const handlerClickUpdate = () => {
-        axios.put(`http://192.168.0.53:8080/qna/${qna.qnaId}`,
+        axios.put(`http://localhost:8080/qna/${qna.qnaId}`,
             { "qnaTitle": qnaTitle, "qnaContents": qnaContents },
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
                 if (response.data === 1) {
-                    alert('정상적으로 수정되었습니다.');                   
+                    alert('정상적으로 수정되었습니다.');
                 } else {
                     alert('수정에 실패했습니다.');
                     return;
@@ -56,16 +57,16 @@ function QnaDetail({ match, history }) {
     const handlerUpdateReply = () => {
 
         if (userIdx != 1) {
-            alert ('관리자만 등록할 수 있습니다');
+            alert('관리자만 등록할 수 있습니다');
             return;
         }
 
-        axios.put(`http://192.168.0.53:8080/reply/${qna.qnaId}`,
-            { "reply" : reply },
+        axios.put(`http://localhost:8080/reply/${qna.qnaId}`,
+            { "reply": reply },
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
                 if (response.data === 1) {
-                    alert('정상적으로 수정되었습니다.');                   
+                    alert('정상적으로 수정되었습니다.');
                 } else {
                     alert('수정에 실패했습니다.');
                     return;
@@ -76,7 +77,7 @@ function QnaDetail({ match, history }) {
 
 
     const handlerClickDelete = () => {
-        axios.delete(`http://192.168.0.53:8080/qna/${qna.qnaId}`,
+        axios.delete(`http://localhost:8080/qna/${qna.qnaId}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
                 console.log(response);
@@ -98,58 +99,39 @@ function QnaDetail({ match, history }) {
     return (
         <>
             <div>
-                <Navi/>                
-            </div> 
-            <div className="qna_detail_container">
-                <h2>게시판 상세</h2>
-                <form action="" method="POST" id="frm" name="frm">
+                <Navi />
+                <div className="qna_detail_container">
+                    <form action="" method="POST" id="frm" name="frm">
+                        <div className="qna_detail_box">
+                            <div className="qna_title_box1">
+                                <div>작성자 : {qna.qnaCreatedId}</div>
+                                <div>조회수 : {qna.qnaHitCnt}</div>
+                            </div>
+                            <div className="qna_title_box2">
+                                <div>글번호 : {qna.qnaId}</div>
+                                <div>작성일 : {qna.qnaCreatedDt}</div>
+                            </div>
+                        </div>
+                        <div className="qna_detail_text_box">
+                            <div className="qna_detail_text_title">제목</div>
+                            <input type="text" value={qnaTitle}
+                                maxLength={70} onChange={handlerChangeQnaTitle} />
+                        </div>
+                        <div className="qna_detail_contents">
+                            <textarea value={qnaContents} onChange={handlerChangeQnaContents}></textarea>
+                        </div>
+                        <div className="qna_reply">
+                            <textarea title="댓글" value={reply} onChange={handlerChangeReply}></textarea>
+                        </div>
+                    </form>
+                    <div className="qna_detail_btn">
+                        <input type="button" value="댓글등록" onClick={handlerUpdateReply} />
+                        <input type="button" value="목록으로" onClick={handlerClickList} />
+                        <input type="button" value="수정하기" onClick={handlerClickUpdate} />
+                        <input type="button" value="삭제하기" onClick={handlerClickDelete} />
+                    </div>
 
-                    <input type="hidden" name="qnaId" />
-
-                    <table className="qna_detail">
-                        <colgroup>
-                            <col width="15%" />
-                            <col width="35%" />
-                            <col width="15%" />
-                            <col width="35%" />
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <th scope="row">글번호</th>
-                                <td>{qna.qnaId}</td>
-                                <th scope="row">조회수</th>
-                                <td>{qna.qnaHitCnt}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">작성자</th>
-                                <td>{qna.qnaCreatedId}</td>
-                                <th scope="row">작성일</th>
-                                <td>{qna.qnaCreatedDt}</td>
-                            </tr>
-                            <tr className='qna_detail_title'>
-                                <th scope="row">제목</th>
-                                <td colSpan="3">
-                                    <input type="text" id="qnaTitle" name="qnaTitle" value={qnaTitle} onChange={handlerChangeQnaTitle} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan="4" className="qna_detail_contents">
-                                    <textarea title="내용" id="qnaContents" name="qnaContents" value={qnaContents} onChange={handlerChangeQnaContents}></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan="4" className="qna_detail_reply">
-                                    <textarea title="댓글" id="reply" name="reply" value={reply} onChange={handlerChangeReply}></textarea>
-                                    <input type="button" id="updateReply" className='btn' value="댓글등록" onClick={handlerUpdateReply} />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-
-                <input type="button" id="list" className="btn" value="목록으로" onClick={handlerClickList} />
-                <input type="button" id="edit" className="btn" value="수정하기" onClick={handlerClickUpdate} />
-                <input type="button" id="delete" className="btn" value="삭제하기" onClick={handlerClickDelete} />
+                </div>
             </div>
         </>
     );

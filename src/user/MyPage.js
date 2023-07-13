@@ -1,13 +1,12 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
-import Navi from "../Navi";
-import "./MyPage.css";
+import Navi from "../main/Navi";
+import "../css/MyPage.css";
 
-const MyPage = ({ match, history }) => {
+const MyPage = () => {
 
     const [userIdx, setUserIdx] = useState('');
-    const [user, setUser] = useState([]);
     const [userId, setUserId] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
@@ -28,7 +27,7 @@ const MyPage = ({ match, history }) => {
 
         let userIdx = decoded_token.userIdx;
 
-        axios.get(`http://192.168.0.53:8080/myInfo/${userIdx}`,
+        axios.get(`http://localhost:8080/myInfo/${userIdx}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
                 console.log(response);
@@ -40,7 +39,7 @@ const MyPage = ({ match, history }) => {
     }, []);
 
     const handlerClickUpdate = () => {
-        axios.put(`http://192.168.0.53:8080/myInfo/${userIdx}`,
+        axios.put(`http://localhost:8080/myInfo/${userIdx}`,
             { "userId": userId, "userEmail": userEmail, "userName": userName, "userPassword": userPassword },
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
@@ -60,32 +59,38 @@ const MyPage = ({ match, history }) => {
     };
 
     return (
-        <>
-            <div>
-                <Navi />
-            </div>
-            <div className="mp_container">
-                <div className="title"><h1>MyPage</h1></div>
-                <div className="mpbox">
-                    <div className="content">
-                        <label>아이디</label><input type="text" id="userId" name="userId" value={userId} readOnly={true} />
+        <div className="my_container">
+            <Navi />
+            <div className="my_title">MyPage</div>
+            <p>*이름과 이메일만 변경 가능합니다</p>
+            <div className="my_content_container">
+                <div className="my_content">
+                    <div className="my_id">
+                        <label>아이디</label>
+                        <input type="text" value={userId} readOnly={true} />
                     </div>
-                    <div className="content">
-                        <label>이름</label><input type="text" id="userName" name="userName" value={userName} onChange={handlerChangeUserName} />
+                    <div className="my_name">
+                        <label>*이름</label>
+                        <input type="text" value={userName} onChange={handlerChangeUserName} />
                     </div>
-                    <div className="content">
-                        <label>이메일</label><input type="text" id="userEmail" name="userEmail" value={userEmail} onChange={handlerChangeUserEmail} />
+                    <div className="my_email">
+                        <label>*이메일</label>
+                        <input type="text" value={userEmail} onChange={handlerChangeUserEmail} />
                     </div>
-                    <div className="content">
-                        <label>레벨</label><input type="text" id="levelName" name="levelName" value={levelName} readOnly={true} />
+                    <div className="my_level">
+                        <label>레벨</label>
+                        <input type="text" value={levelName} readOnly={true} />
                     </div>
-                    <div className="content">
-                        <label>클래스</label><input type="text" id="className" name="className" value={className} readOnly={true} />
+                    <div className="my_class">
+                        <label>클래스</label>
+                        <input type="text" value={className} readOnly={true} />
                     </div>
-                    <button className="mp_button" onClick={handlerClickUpdate}>수정</button>
                 </div>
             </div>
-        </>
+            <div className="my_btn">
+                <button onClick={handlerClickUpdate}>수정 완료</button>
+            </div>
+        </div>
     );
 };
 

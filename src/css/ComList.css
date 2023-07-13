@@ -1,0 +1,117 @@
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+/* ----------------------------- 커뮤니티 리스트 ----------------------------- */
+
+/* 전체 박스 */
+.community_container {
+	margin: 5%;
+	width: 90%;
+}
+.comunity_title {
+	width: 20%;
+    margin: 5% 0% 1% 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: 'GmarketSansMedium';
+}
+/* 리스트 박스 */
+.community_list_container {
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+    color: black;
+	font-family: 'GmarketSansMedium';	
+}
+.community_list_container a {
+	text-decoration: none;
+}
+.community_list_container a:visited {
+	color: transparent;
+}
+
+/* 리스트 제목 바 */
+.community_list_bar {
+	width: 100%;
+	display: flex;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #008E97;
+	color: white;
+}
+
+/* 글번호, 조회수 */
+.com_list_num, .com_list_view {
+	width: 10%;
+}
+/* 카테고리, 작성일 */
+.com_list_category, .com_list_date {
+	width: 20%;
+}
+/* 제목 */
+.com_list_title {
+	width: 40%;
+	text-align: left;
+}
+/* 리스트 내용 칸 전체 */
+.community_content {
+	width: 100%;
+	text-align: center;
+}
+.community_content tr {
+	width: 100%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	display: flex;
+}
+/* 제목 링크 */
+.com_list_title a {
+	color: black;
+	width: 35%;
+	text-align: left;
+}
+
+
+/* ----------------------------- 글쓰기 버튼, 페이지 ----------------------------- */
+
+.com_page_btn {
+	width: 100%;
+	margin-top: 3%;
+	margin-bottom: 10%;
+	font-family: 'GmarketSansMedium';	
+}
+
+.community_btn, .community_page {
+	float: left;
+	display: flex;
+    justify-content: right;
+	width: 50%;
+}
+.community_btn a {
+	width: 100px;
+	height: 35px;
+	background-color: #008E97;
+	border: 3px solid #01676e;
+	border-radius: 10px;
+	align-items: center;
+    justify-content: center;
+	display: flex;
+	color: white;
+	font-size: 20px;
+}
+.community_btn a:link, .community_btn a:visited {
+    text-decoration: none;
+}
+.community_btn a:hover {
+   cursor: pointer;
+	background-color: #ffb06a;
+	border: 3px solid #fe8e2c;
+}
+
+/* ----------------------------- 커뮤니티 리스트 끝 ----------------------------- */

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Navi from "../Navi";
-import "./Com.css";
-import Pagination from "./Pagination";
+import Navi from "../main/Navi";
+import Pagination from "./Com_page";
+import "../css/ComList.css";
+
 
 const ComList = ({ history }) => {
 
@@ -18,17 +19,17 @@ const ComList = ({ history }) => {
         currentPosts = datas.slice(indexOfFirst, indexOfLast);
         return currentPosts;
     };
-   
+
 
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         if (!token) {
             alert('로그인 후 사용할 수 있습니다.');
-            history.push('/main');
+            history.push('/login');
             return;
         }
 
-        axios.get(`http://192.168.0.53:8080/community`,
+        axios.get(`http://localhost:8080/community`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
                 console.log(response)
@@ -44,61 +45,55 @@ const ComList = ({ history }) => {
     }, []);
 
     return (
-        <>
-            <div>
-                <Navi />
-            </div>
+        <div>
+            <Navi />
             <div className="community_container">
-                <h2>게시판 목록</h2>
-                <table className="community_list">
-                    <colgroup>
-                        <col width="15%" />
-                        <col width="*" />
-                        <col width="*" />
-                        <col width="15%" />
-                        <col width="20%" />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th scope="col">글번호</th>
-                            <th scope="col">카테고리</th>
-                            <th scope="col">제목</th>
-                            <th scope="col">조회수</th>
-                            <th scope="col">작성일</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {datas.length === 0 && (
-                            <tr>
-                                <td colSpan="4">일치하는 데이터가 없습니다.</td>
-                            </tr>
-                        )}
-                        {currentPosts(datas) && currentPosts(datas).map(com => (
-                            <tr key={com.comId}>
-                                <td>{com.comId}</td>
-                                <td>{com.categoryName}</td>
-                                <td className="title">
-                                    <Link to={`/community/detail/${com.comId}`}>{com.comTitle}</Link>
-                                </td>
-                                <td>{com.comHitCnt}</td>
-                                <td>{com.comCreatedDt}</td>
-                            </tr>
-                        ))}
-
-                    </tbody>
-                </table>
-                <div>
-                    <Pagination
-                        postsPerPage={postsPerPage}
-                        totalPosts={datas.length}
-                        paginate={setCurrentPage}
-                    ></Pagination>
+                <div className="comunity_title">커뮤니티</div>
+                <div className="community_list_container">
+                    <div className="community_list_bar">
+                        <div className="com_list_num">글번호</div>
+                        <div className="com_list_category">카테고리</div>
+                        <div className="com_list_title">제목</div>
+                        <div className="com_list_view">조회수</div>
+                        <div className="com_list_date">작성일</div>
+                    </div>
+                    <table className="community_content">
+                        <tbody>
+                            {datas.length === 0 && (
+                                <tr>
+                                    <td>등록된 글이 없습니다.</td>
+                                </tr>
+                            )}
+                        </tbody>
+                        <tbody>
+                            {currentPosts(datas) && currentPosts(datas).map(com => (
+                                <tr key={com.comId}>
+                                    <td className="com_list_num">{com.comId}</td>
+                                    <td className="com_list_category">{com.categoryName}</td>
+                                    <td className="com_list_title">
+                                        <Link to={`/community/detail/${com.comId}`}>{com.comTitle}</Link>
+                                    </td>
+                                    <td className="com_list_view">{com.comHitCnt}</td>
+                                    <td className="com_list_date">{com.comCreatedDt}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-                <div>
-                    <Link to={`/community/write`} className="btn">글쓰기</Link>
+                <div className="com_page_btn">
+                    <div className="community_page">
+                        <Pagination
+                            postsPerPage={postsPerPage}
+                            totalPosts={datas.length}
+                            paginate={setCurrentPage}
+                        ></Pagination>
+                    </div>
+                    <div className="community_btn">
+                        <Link to={`/community/write`}>글쓰기</Link>
+                    </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

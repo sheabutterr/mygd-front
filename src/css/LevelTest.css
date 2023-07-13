@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 레벨테스트 전체 박스 */
+.level_container {
+  margin: 5%;
+  width: 90%;
+  font-family: 'GmarketSansMedium';
+}
+
+/* 레벨테스트 타이틀 */
+.level_title {
+  width: 20%;
+  margin: 5% 0% 5% 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-family: 'GmarketSansMedium';
+}
+
+/* 레벨테스트 내용 전체 */
+.level_inner {
+  display: block;
+  text-align: center;
+}
+.level_catchphrase {
+  width: 50%;
+  margin-left: 24.5%;
+  font-size: 30px;
+  background-color: #F58220;
+  color: white;
+  padding: 1%;
+  border-radius: 15px;
+  box-shadow: 5px 5px #b15200;
+}
+
+/* 레벨 별 질문 박스 */
+.level_question {
+  width: 45%;
+  margin-left: 27%;
+  font-size: 30px;
+  color: white;
+  padding: 1%;
+  border-radius: 15px;
+  background-color: #008E97;
+  box-shadow: 5px 5px #074d52;
+}
+
+/* 버튼 전체 */
+.level_ans {
+  width: 95%;
+  margin-left: 5%;
+  margin-top: 3%;
+  display: flex;
+}
+/* 대답 버튼 */
+.level_btn {
+  background-color: white;
+  color: black;
+  width: 20%;
+  height: 80px;
+  margin-right: 5%;
+  font-size: 25px;
+  font-family: 'GmarketSansMedium';
+  border: 3px solid black;
+  border-radius: 15px;
+  box-shadow: 5px 5px black;
+  cursor: pointer;
+}
+/* 제출 버튼 */
+.level_sub_btn {
+  background-color: white;
+  color: black;
+  width: 20%;
+  height: 80px;
+  margin-top: 3%;
+  font-size: 25px;
+  font-family: 'GmarketSansMedium';
+  border: 3px solid black;
+  border-radius: 15px;
+  box-shadow: 5px 5px black;
+  cursor: pointer;
+}

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navi from '../Navi';
-import "./QnA.css";
-import Pagination from "./Pagination";
+import Navi from '../main/Navi';
+import "../css/QnAList.css";
+import Pagination from "./Qna_page";
 
 const QnaList = ({ history }) => {
 
@@ -23,11 +23,11 @@ const QnaList = ({ history }) => {
         const token = sessionStorage.getItem('token');
         if (!token) {
             alert('로그인 후 사용할 수 있습니다.');
-            history.push('/main');
+            history.push('/login');
             return;
         }
 
-        axios.get('http://192.168.0.53:8080/qna',
+        axios.get('http://localhost:8080/qna',
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
                 console.log(response);
@@ -44,62 +44,54 @@ const QnaList = ({ history }) => {
 
 
     return (
-        <>
-            <div>
-                <Navi/>                
-            </div> 
+        <div>
+            <Navi />
             <div className="qna_container">
-                <h2>Q&A</h2>
-                <table className="qna_list">
-                    <colgroup>
-                        <col width="15%" />
-                        <col width="*" />
-                        <col width="15%" />
-                        <col width="20%" />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th scope="col">글번호</th>
-                            <th scope="col">제목</th>
-                            <th scope="col">작성자</th>
-                            <th scope="col">조회수</th>
-                            <th scope="col">작성일</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            datas.length === 0 && (
+                <div className="qna_title">QnA</div>
+                <div className="qna_list_container">
+                    <div className="qna_list_bar">
+                        <div className="qna_list_num">글번호</div>
+                        <div className="qna_list_id">작성자</div>
+                        <div className="qna_list_title">제목</div>
+                        <div className="qna_list_view">조회수</div>
+                        <div className="qna_list_date">작성일</div>
+                    </div>
+                    <table className="qna_content">
+                        <tbody>
+                            {datas.length === 0 && (
                                 <tr>
-                                    <td colSpan="4">일치하는 데이터가 없습니다.</td>
+                                    <td>등록된 글이 없습니다.</td>
                                 </tr>
-                            )
-                        }
-                        {
-                            currentPosts(datas) && currentPosts(datas).map(qna => (
+                            )}
+                        </tbody>
+                        <tbody>
+                            {currentPosts(datas) && currentPosts(datas).map(qna => (
                                 <tr key={qna.qnaId}>
-                                    <td>{qna.qnaId}</td>
-                                    <td className="title">
+                                    <td className="qna_list_num">{qna.qnaId}</td>
+                                    <td className="qna_list_id">{qna.qnaCreatedId}</td>
+                                    <td className="qna_list_title">
                                         <Link to={`/qna/detail/${qna.qnaId}`}>{qna.qnaTitle}</Link></td>
-                                    <td>{qna.qnaCreatedId}</td>
-                                    <td>{qna.qnaHitCnt}</td>
-                                    <td>{qna.qnaCreatedDt}</td>
+                                    <td className="qna_list_view">{qna.qnaHitCnt}</td>
+                                    <td className="qna_list_date">{qna.qnaCreatedDt}</td>
                                 </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
-                <div>
-                    <Pagination
-                        postsPerPage={postsPerPage}
-                        totalPosts={datas.length}
-                        paginate={setCurrentPage}
-                    ></Pagination>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-                <div>
-                    <Link to={`/qna/write`} className="btn">글쓰기</Link>
-                </div>                 
+                <div className="qna_page_btn">
+                    <div className="qna_page">
+                        <Pagination
+                            postsPerPage={postsPerPage}
+                            totalPosts={datas.length}
+                            paginate={setCurrentPage}
+                        ></Pagination>
+                    </div>
+                    <div className="qna_btn">
+                        <Link to={`/qna/write`}>글쓰기</Link>
+                    </div>
+                </div>
             </div>
-        </>
+        </div>
     );
 };
 

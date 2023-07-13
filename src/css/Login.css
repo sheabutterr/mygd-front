@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.login_container {
+    width: 100%;
+    text-align: center;
+}
+.login_title {
+    width: 20%;
+    margin: 5% 0% 3% 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: 'GmarketSansMedium';
+  }
+/* ---------------------------------------- 내용 ---------------------------------------- */
+
+.login_box input {
+    width: 25%;
+    height: 40px;
+    background-color: #e2f7f9;
+    border: 3px solid #008E97;
+    border-radius: 10px;
+    padding-left: 1%;
+    margin-bottom: 1%;
+    font-size: 20px;
+    outline: none;
+    font-family: 'GmarketSansMedium';
+}
+
+.login_box input::placeholder {
+    color: gray;
+    font-size: 15px;
+}
+/* ----------------------------- 버튼 ----------------------------- */
+
+.login_button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+	margin-bottom: 10%;
+}
+.login_button button {
+	width: 5%;
+	height: 40px;
+	cursor: pointer;
+	color: white;
+	background-color: #008E97;
+	border: none;
+	border-radius: 10px;
+	font-size: 15px;
+	font-family: 'GmarketSansMedium';
+}
+
+.login_button button:hover {
+    color: #008E97;
+	background-color: #e2f7f9;
+	border: 3.5px solid #008E97;
+}
